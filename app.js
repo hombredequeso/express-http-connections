@@ -12,6 +12,12 @@ const {execSync, exec} = require('child_process');
 
 const process = require('process');
 
+// Configuration:
+//
+const maxSockets = 100; // http client agent maxSockets.
+const requestAbortTimeout = 2000; // 2sec. http client request timeout.
+
+
 if (process.pid) {
   console.log('This process is your pid ' + process.pid);
 }
@@ -28,7 +34,7 @@ const NodeProcessMetrics = require('node-process-metrics');
 const pm = new NodeProcessMetrics();
 
 const keepAliveAgent = new Agent({
-  maxSockets: 2,
+  maxSockets: maxSockets,
   // maxFreeSockets: 10,
   timeout: 60000, // active socket keepalive for 60 seconds
   freeSocketTimeout: 3000, // free socket keepalive for 30 seconds
@@ -67,17 +73,22 @@ axios.interceptors.response.use(function (response) {
 let counter =-1;
 let lastResponseTime = null;
 
+
 app.get('/book', (req, res) => {
   const startTime = new Date();
   axios.get('http://localhost:3000/order/2', {
     httpAgent: keepAliveAgent,
-    timeout: 5000
-    // signal: AbortSignal.timeout(5000)
+    // timeout: 5000
+    signal: AbortSignal.timeout(requestAbortTimeout)
   }).then(x => {
     const endTime = new Date();
     lastResponseTime = endTime - startTime;
     // lastResponseTime = x.duration;
     res.send('book response');
+  }).catch(e => {
+    res
+      .status(500)
+      .send(e.message ?? "request failure");
   })
 })
 
@@ -87,8 +98,12 @@ const server = app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
+
+
 const logfdcount = (processId) => {
-  const cmd = `ls /proc/${processId}/fd | wc -l`
+  const cmd = process.platform === 'darwin' ?
+    `lsof -p ${processId} | wc -l`:
+    `ls /proc/${processId}/fd | wc -l`;
   exec(cmd, (err, output) => {
       if (err) {
           console.error("could not execute command: ", err)
