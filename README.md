@@ -24,3 +24,22 @@ docker run -d\
  graphiteapp/graphite-statsd
 
 ```
+
+## USAGE
+
+Using mock-api:
+```
+node index.js ./sample2.json
+```
+
+In express-http-connections:
+```
+node app.js 
+```
+
+Then:
+```
+curl localhost:4000/book
+```
+
+
