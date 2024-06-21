@@ -42,4 +42,10 @@ Then:
 curl localhost:4000/book
 ```
 
+Some example tests to observe connection/socket behaviour:
+```
+ab -t 20 -c 1 localhost:4000/book
+ab -t 20 -c 100 localhost:4000/book
+ab -t 20 -c 500 localhost:4000/book
+```
 
