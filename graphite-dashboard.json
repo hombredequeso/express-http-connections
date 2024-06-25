@@ -1,0 +1,82 @@
+[
+  {
+    "target": [
+      "stats.http-cxn-tester.start-test"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.fd-count"
+    ]
+  },
+  {
+    "target": [
+      "stats.http-cxn-tester.get-book"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.keep-alive.closeSocketCount"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.keep-alive.createSocketCount"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.keep-alive.createSocketErrorCount"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.keep-alive.errorSocketCount"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.keep-alive.requestCount"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.keep-alive.timeoutSocketCount"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.pm.loop-delay"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.pm.process.memoryUsage.arrayBuffers"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.pm.process.memoryUsage.external"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.pm.process.memoryUsage.heapTotal"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.pm.process.memoryUsage.heapUsed"
+    ]
+  },
+  {
+    "target": [
+      "stats.gauges.http-cxn-tester.pm.process.memoryUsage.rss"
+    ]
+  },
+  {
+    "target": [
+      "stats.timers.http-cxn-tester.get-book.response-time.count"
+    ]
+  }
+]
