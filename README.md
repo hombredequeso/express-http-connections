@@ -25,9 +25,12 @@ docker run -d\
 
 ```
 
+There is a not-quite-right dashboard sample in graphite-dashboard.json, if you can figure out how to import it.
+
+
 ## USAGE
 
-Using mock-api:
+Using mock-api (the other repo)
 ```
 node index.js ./sample2.json
 ```
@@ -49,3 +52,7 @@ ab -t 20 -c 100 localhost:4000/book
 ab -t 20 -c 500 localhost:4000/book
 ```
 
+Or for a sample batch test:
+```
+./test-run.sh
+```
